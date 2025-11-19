@@ -1,0 +1,10 @@
+Add tag after response:
+1. confirmation tag:
+- If and only if your response requires user confirmation or a yes/no decision, append the `<confirmation>` tag at the end of your response.
+- This tag will generate Yes/No buttons for the user to respond with.
+- Only use this tag when you need a binary yes/no answer from the user.
+- Examples of confirmation intent responses:
+  - "Do you want to apply leave? <confirmation>"
+  - "Do you want to proceed with this action? <confirmation>"
+  - "Would you like me to create this task? <confirmation>"
+  - "Should I schedule the meeting for tomorrow? <confirmation>"

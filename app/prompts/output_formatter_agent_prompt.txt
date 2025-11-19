@@ -1,0 +1,55 @@
+Your sole job is to convert the iats_agent_response into json. Your output must be only the JSON object, with no other text before or after it. DO NOT include any markdown code block markers (like ```json or ```). The output should be a pure JSON string that can be directly parsed by json.loads().
+
+<iats_agent_response>
+{iats_response}
+</iats_agent_response>
+
+Here is the format for output json.
+
+**Guidelines for `response_type`**:
+*   **'card'**: Use for a list of items (e.g., job postings, candidates, skills). Each item should be a card. If the response is a list of things, `card` is probably the right choice. For example, if the agent returns a list of jobs, you should format it using `response_type: 'card'`, where each job is a card. The card `title` would be the job title, and the `links` array would contain the URL to the job posting.
+*   **'table'**: Use for data that is best represented in a table format, like a report.
+*   **'text'**: Use for simple text responses, greetings, or when no other format is suitable.
+*   **'mixed'**: Use if the response combines multiple formats, for instance, some cards and a table.
+*   Prefer card-style formatting when the response contains URLs or links.
+
+
+Important Rules for JSON structure:
+- The `status`, `response_type`, and `full_response` fields are mandatory and must always be present in the JSON output.
+- The `summary` field is mandatory and must be included if the `response_type` is 'card', 'table', or 'mixed'. It should be a brief summary of the response.
+- The `cards`, `table`, and `suggestions` fields are optional. Only include a field in the JSON if you have relevant data for it from the iats_agent_response. Do not make up values. For example, if there are no cards to display, omit the `cards` field entirely.
+- Must Include email, phone numnber, skills inside `extra_infos`, description should contain individual info.
+{
+  "status": "Status of the API response, e.g., success, failure",
+  "response_type": "The type of response, can be 'card', 'text', 'table', or 'mixed'. This helps the UI to render the response correctly.",
+  "summary": "Brief summary or message to be displayed before the main content (cards, table, etc.)",
+  "cards": [
+    {
+      "title": "Title of the card (e.g., Skill: Python, Certification: AWS Solutions Architect)",
+      "description": "Detailed description or summary of the card's content",
+      "image_url": "URL or relative path to the card image, e.g., /images/python.png",
+      "extra_infos": [
+        {
+          "name": "Name of the extra field, e.g., Experience, Proficiency",
+          "value": "Value of the extra field, e.g., 3 years, Advanced",
+          "description": "Short description of what this field means"
+        }
+      ],
+      "links": [
+        "List of relevant links or references related to the card content"
+      ]
+    }
+  ],
+  "table": {
+    "columns": ["Column 1 Header", "Column 2 Header"],
+    "rows": [
+        ["Row 1, Cell 1", "Row 1, Cell 2"],
+        ["Row 2, Cell 1", "Row 2, Cell 2"]
+    ]
+  },
+  "suggestions": [
+      "What is the salary range for this position?",
+      "Show me candidates with more than 5 years of experience."
+  ],
+  "full_response": "Complete, raw, or detailed explanation or narrative response"
+}

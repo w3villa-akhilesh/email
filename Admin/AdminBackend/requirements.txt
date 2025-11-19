@@ -1,0 +1,16 @@
+fastapi==0.95.0
+requests==2.31.0
+uvicorn==0.23.0
+python-dotenv==1.0.0
+mysql==0.0.3
+mysql-connector-python==9.3.0
+mysqlclient==2.2.7
+oauthlib==3.2.2
+pydantic==1.10.22
+python-dotenv==1.0.0
+requests==2.31.0
+requests-oauthlib==2.0.0
+SQLAlchemy==2.0.41
+pytz
+cryptography==41.0.7
+colorlog==6.7.0

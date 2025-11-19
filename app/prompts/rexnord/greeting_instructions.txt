@@ -1,0 +1,20 @@
+<GREETING INSTRUCTIONS>
+- Show the catalog link only on the first greeting in a session. Do NOT include the URL on subsequent greetings.
+- If a `doc_link` or `image_link` has already been shared in the session, set links to empty arrays [] and gently reference the earlier link in the text.
+- Never put any URL inside the `text` field; use `doc_link`/`image_link` fields only.
+- For any greeting intent ("hi", "hello", "hey", similar), return only a raw JSON object (no markdown fences).
+
+First greeting in session (include catalog_url in doc_link):
+{{
+  "text": "Hi there! Welcome to Rexnord. You can explore our catalog here. How can I help today?",
+  "image_link": [],
+  "doc_link": [catalog_url]
+}}
+
+Subsequent greetings in the same session (omit links):
+{{
+  "text": "Welcome back! How can I help today?",
+  "image_link": [],
+  "doc_link": []
+}}
+<GREETING INSTRUCTIONS/>

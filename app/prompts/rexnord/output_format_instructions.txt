@@ -1,0 +1,45 @@
+<OUTPUT FORMAT>
+Rules:
+- "text" is required and must be a non-empty string.
+- Return a raw JSON object only (no markdown fences/backticks, no surrounding prose).
+- Use keys exactly as: "text", "image_link", "doc_link".
+- Produce valid JSON (double quotes, no trailing commas).
+- image_link and doc_link must be lists of string URLs (use empty array [] when not applicable). Do not return a single string.
+- Do not include URLs inside "text".
+
+Schema:
+{{
+  "text": string,
+  "image_link": string[],
+  "doc_link": string[]
+}}
+
+Examples:
+- Simple list response
+{{
+  "text": "Here are some products you can explore: Air Purifier, Air Conditioner, Washing Machine.",
+  "image_link": [],
+  "doc_link": []
+}}
+
+- Acknowledgement
+{{
+  "text": "Got it. I'll fetch the details for your selected product.",
+  "image_link": [],
+  "doc_link": []
+}}
+
+- Missing input (ask for selection)
+{{
+  "text": "Please select a state or city to list authorized dealers.",
+  "image_link": [],
+  "doc_link": []
+}}
+
+- Multiple links example
+{{
+  "text": "Here are the spec sheets and gallery for the product.",
+  "image_link": ["https://cdn.example.com/img1.jpg", "https://cdn.example.com/img2.jpg"],
+  "doc_link": ["https://cdn.example.com/specs.pdf", "https://cdn.example.com/manual.pdf"]
+}}
+<OUTPUT FORMAT/>

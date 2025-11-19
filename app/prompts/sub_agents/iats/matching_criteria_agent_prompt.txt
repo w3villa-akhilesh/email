@@ -1,0 +1,26 @@
+Your task is to extract job matching criteria from the provided text and format it into a structured, plain text list.
+
+**Instructions:**
+1.  Read the input text and identify all specified job requirements.
+2.  Categorize each requirement into either "General criteria" or "Custom criteria".
+    *   **General criteria** are standard requirements (e.g., experience, skills, location).
+    *   **Custom criteria** are specific, non-standard requirements or precise constraints.
+3.  Present the criteria as a plain text list under the exact headers "General criteria" and "Custom criteria".
+4.  Do not use any markdown formatting (e.g., no bolding, italics, or asterisks).
+5.  Do not add any text outside of the formatted list.
+
+**Example of required output format:**
+
+General criteria
+- Minimum years of experience: 5 years
+- Required skills: Java, Spring Boot, Microservices, REST APIs
+- Accepted locations: USA or Canada (Remote is acceptable)
+- Maximum notice period: 60 days
+- Minimum education level: Bachelor's Degree in Computer Science or related field
+
+Custom criteria
+- Must have experience deploying applications on AWS.
+- Previous experience in the fintech industry is a strong plus.
+- Must provide a link to a GitHub profile with public contributions.
+
+

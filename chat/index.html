@@ -1,0 +1,642 @@
+<div id="chatbotIframe"  title="Chatbot" class="ng-scope" style="width: 80px; height: 100px;">
+
+
+    <html lang="en"><head>
+        <title>Chatbot Iframe</title>
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+        <script src="packs/js/chatbot-sdk.js"></script>
+        <style type="text/css">:root, :host {
+        --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+        --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+        --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+        --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+        --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+        --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";
+        --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";
+        --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";
+        --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+        --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+        --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+        --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";
+        --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";
+        --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";
+        --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";
+        --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";
+        --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";
+      }
+      
+      svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+        overflow: visible;
+        box-sizing: content-box;
+      }
+      
+      .svg-inline--fa {
+        display: var(--fa-display, inline-block);
+        height: 1em;
+        overflow: visible;
+        vertical-align: -0.125em;
+      }
+      .svg-inline--fa.fa-2xs {
+        vertical-align: 0.1em;
+      }
+      .svg-inline--fa.fa-xs {
+        vertical-align: 0em;
+      }
+      .svg-inline--fa.fa-sm {
+        vertical-align: -0.0714285705em;
+      }
+      .svg-inline--fa.fa-lg {
+        vertical-align: -0.2em;
+      }
+      .svg-inline--fa.fa-xl {
+        vertical-align: -0.25em;
+      }
+      .svg-inline--fa.fa-2xl {
+        vertical-align: -0.3125em;
+      }
+      .svg-inline--fa.fa-pull-left {
+        margin-right: var(--fa-pull-margin, 0.3em);
+        width: auto;
+      }
+      .svg-inline--fa.fa-pull-right {
+        margin-left: var(--fa-pull-margin, 0.3em);
+        width: auto;
+      }
+      .svg-inline--fa.fa-li {
+        width: var(--fa-li-width, 2em);
+        top: 0.25em;
+      }
+      .svg-inline--fa.fa-fw {
+        width: var(--fa-fw-width, 1.25em);
+      }
+      
+      .fa-layers svg.svg-inline--fa {
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      
+      .fa-layers-counter, .fa-layers-text {
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+      }
+      
+      .fa-layers {
+        display: inline-block;
+        height: 1em;
+        position: relative;
+        text-align: center;
+        vertical-align: -0.125em;
+        width: 1em;
+      }
+      .fa-layers svg.svg-inline--fa {
+        transform-origin: center center;
+      }
+      
+      .fa-layers-text {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: center center;
+      }
+      
+      .fa-layers-counter {
+        background-color: var(--fa-counter-background-color, #ff253a);
+        border-radius: var(--fa-counter-border-radius, 1em);
+        box-sizing: border-box;
+        color: var(--fa-inverse, #fff);
+        line-height: var(--fa-counter-line-height, 1);
+        max-width: var(--fa-counter-max-width, 5em);
+        min-width: var(--fa-counter-min-width, 1.5em);
+        overflow: hidden;
+        padding: var(--fa-counter-padding, 0.25em 0.5em);
+        right: var(--fa-right, 0);
+        text-overflow: ellipsis;
+        top: var(--fa-top, 0);
+        transform: scale(var(--fa-counter-scale, 0.25));
+        transform-origin: top right;
+      }
+      
+      .fa-layers-bottom-right {
+        bottom: var(--fa-bottom, 0);
+        right: var(--fa-right, 0);
+        top: auto;
+        transform: scale(var(--fa-layers-scale, 0.25));
+        transform-origin: bottom right;
+      }
+      
+      .fa-layers-bottom-left {
+        bottom: var(--fa-bottom, 0);
+        left: var(--fa-left, 0);
+        right: auto;
+        top: auto;
+        transform: scale(var(--fa-layers-scale, 0.25));
+        transform-origin: bottom left;
+      }
+      
+      .fa-layers-top-right {
+        top: var(--fa-top, 0);
+        right: var(--fa-right, 0);
+        transform: scale(var(--fa-layers-scale, 0.25));
+        transform-origin: top right;
+      }
+      
+      .fa-layers-top-left {
+        left: var(--fa-left, 0);
+        right: auto;
+        top: var(--fa-top, 0);
+        transform: scale(var(--fa-layers-scale, 0.25));
+        transform-origin: top left;
+      }
+      
+      .fa-1x {
+        font-size: 1em;
+      }
+      
+      .fa-2x {
+        font-size: 2em;
+      }
+      
+      .fa-3x {
+        font-size: 3em;
+      }
+      
+      .fa-4x {
+        font-size: 4em;
+      }
+      
+      .fa-5x {
+        font-size: 5em;
+      }
+      
+      .fa-6x {
+        font-size: 6em;
+      }
+      
+      .fa-7x {
+        font-size: 7em;
+      }
+      
+      .fa-8x {
+        font-size: 8em;
+      }
+      
+      .fa-9x {
+        font-size: 9em;
+      }
+      
+      .fa-10x {
+        font-size: 10em;
+      }
+      
+      .fa-2xs {
+        font-size: 0.625em;
+        line-height: 0.1em;
+        vertical-align: 0.225em;
+      }
+      
+      .fa-xs {
+        font-size: 0.75em;
+        line-height: 0.0833333337em;
+        vertical-align: 0.125em;
+      }
+      
+      .fa-sm {
+        font-size: 0.875em;
+        line-height: 0.0714285718em;
+        vertical-align: 0.0535714295em;
+      }
+      
+      .fa-lg {
+        font-size: 1.25em;
+        line-height: 0.05em;
+        vertical-align: -0.075em;
+      }
+      
+      .fa-xl {
+        font-size: 1.5em;
+        line-height: 0.0416666682em;
+        vertical-align: -0.125em;
+      }
+      
+      .fa-2xl {
+        font-size: 2em;
+        line-height: 0.03125em;
+        vertical-align: -0.1875em;
+      }
+      
+      .fa-fw {
+        text-align: center;
+        width: 1.25em;
+      }
+      
+      .fa-ul {
+        list-style-type: none;
+        margin-left: var(--fa-li-margin, 2.5em);
+        padding-left: 0;
+      }
+      .fa-ul > li {
+        position: relative;
+      }
+      
+      .fa-li {
+        left: calc(-1 * var(--fa-li-width, 2em));
+        position: absolute;
+        text-align: center;
+        width: var(--fa-li-width, 2em);
+        line-height: inherit;
+      }
+      
+      .fa-border {
+        border-color: var(--fa-border-color, #eee);
+        border-radius: var(--fa-border-radius, 0.1em);
+        border-style: var(--fa-border-style, solid);
+        border-width: var(--fa-border-width, 0.08em);
+        padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+      }
+      
+      .fa-pull-left {
+        float: left;
+        margin-right: var(--fa-pull-margin, 0.3em);
+      }
+      
+      .fa-pull-right {
+        float: right;
+        margin-left: var(--fa-pull-margin, 0.3em);
+      }
+      
+      .fa-beat {
+        animation-name: fa-beat;
+        animation-delay: var(--fa-animation-delay, 0s);
+        animation-direction: var(--fa-animation-direction, normal);
+        animation-duration: var(--fa-animation-duration, 1s);
+        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+        animation-timing-function: var(--fa-animation-timing, ease-in-out);
+      }
+      
+      .fa-bounce {
+        animation-name: fa-bounce;
+        animation-delay: var(--fa-animation-delay, 0s);
+        animation-direction: var(--fa-animation-direction, normal);
+        animation-duration: var(--fa-animation-duration, 1s);
+        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+        animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+      }
+      
+      .fa-fade {
+        animation-name: fa-fade;
+        animation-delay: var(--fa-animation-delay, 0s);
+        animation-direction: var(--fa-animation-direction, normal);
+        animation-duration: var(--fa-animation-duration, 1s);
+        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+        animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+      }
+      
+      .fa-beat-fade {
+        animation-name: fa-beat-fade;
+        animation-delay: var(--fa-animation-delay, 0s);
+        animation-direction: var(--fa-animation-direction, normal);
+        animation-duration: var(--fa-animation-duration, 1s);
+        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+        animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+      }
+      
+      .fa-flip {
+        animation-name: fa-flip;
+        animation-delay: var(--fa-animation-delay, 0s);
+        animation-direction: var(--fa-animation-direction, normal);
+        animation-duration: var(--fa-animation-duration, 1s);
+        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+        animation-timing-function: var(--fa-animation-timing, ease-in-out);
+      }
+      
+      .fa-shake {
+        animation-name: fa-shake;
+        animation-delay: var(--fa-animation-delay, 0s);
+        animation-direction: var(--fa-animation-direction, normal);
+        animation-duration: var(--fa-animation-duration, 1s);
+        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+        animation-timing-function: var(--fa-animation-timing, linear);
+      }
+      
+      .fa-spin {
+        animation-name: fa-spin;
+        animation-delay: var(--fa-animation-delay, 0s);
+        animation-direction: var(--fa-animation-direction, normal);
+        animation-duration: var(--fa-animation-duration, 2s);
+        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+        animation-timing-function: var(--fa-animation-timing, linear);
+      }
+      
+      .fa-spin-reverse {
+        --fa-animation-direction: reverse;
+      }
+      
+      .fa-pulse,
+      .fa-spin-pulse {
+        animation-name: fa-spin;
+        animation-direction: var(--fa-animation-direction, normal);
+        animation-duration: var(--fa-animation-duration, 1s);
+        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+        animation-timing-function: var(--fa-animation-timing, steps(8));
+      }
+      
+      @media (prefers-reduced-motion: reduce) {
+        .fa-beat,
+      .fa-bounce,
+      .fa-fade,
+      .fa-beat-fade,
+      .fa-flip,
+      .fa-pulse,
+      .fa-shake,
+      .fa-spin,
+      .fa-spin-pulse {
+          animation-delay: -1ms;
+          animation-duration: 1ms;
+          animation-iteration-count: 1;
+          transition-delay: 0s;
+          transition-duration: 0s;
+        }
+      }
+      @keyframes fa-beat {
+        0%, 90% {
+          transform: scale(1);
+        }
+        45% {
+          transform: scale(var(--fa-beat-scale, 1.25));
+        }
+      }
+      @keyframes fa-bounce {
+        0% {
+          transform: scale(1, 1) translateY(0);
+        }
+        10% {
+          transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+        }
+        30% {
+          transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+        }
+        50% {
+          transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+        }
+        57% {
+          transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+        }
+        64% {
+          transform: scale(1, 1) translateY(0);
+        }
+        100% {
+          transform: scale(1, 1) translateY(0);
+        }
+      }
+      @keyframes fa-fade {
+        50% {
+          opacity: var(--fa-fade-opacity, 0.4);
+        }
+      }
+      @keyframes fa-beat-fade {
+        0%, 100% {
+          opacity: var(--fa-beat-fade-opacity, 0.4);
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(var(--fa-beat-fade-scale, 1.125));
+        }
+      }
+      @keyframes fa-flip {
+        50% {
+          transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+        }
+      }
+      @keyframes fa-shake {
+        0% {
+          transform: rotate(-15deg);
+        }
+        4% {
+          transform: rotate(15deg);
+        }
+        8%, 24% {
+          transform: rotate(-18deg);
+        }
+        12%, 28% {
+          transform: rotate(18deg);
+        }
+        16% {
+          transform: rotate(-22deg);
+        }
+        20% {
+          transform: rotate(22deg);
+        }
+        32% {
+          transform: rotate(-12deg);
+        }
+        36% {
+          transform: rotate(12deg);
+        }
+        40%, 100% {
+          transform: rotate(0deg);
+        }
+      }
+      @keyframes fa-spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .fa-rotate-90 {
+        transform: rotate(90deg);
+      }
+      
+      .fa-rotate-180 {
+        transform: rotate(180deg);
+      }
+      
+      .fa-rotate-270 {
+        transform: rotate(270deg);
+      }
+      
+      .fa-flip-horizontal {
+        transform: scale(-1, 1);
+      }
+      
+      .fa-flip-vertical {
+        transform: scale(1, -1);
+      }
+      
+      .fa-flip-both,
+      .fa-flip-horizontal.fa-flip-vertical {
+        transform: scale(-1, -1);
+      }
+      
+      .fa-rotate-by {
+        transform: rotate(var(--fa-rotate-angle, 0));
+      }
+      
+      .fa-stack {
+        display: inline-block;
+        vertical-align: middle;
+        height: 2em;
+        position: relative;
+        width: 2.5em;
+      }
+      
+      .fa-stack-1x,
+      .fa-stack-2x {
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: var(--fa-stack-z-index, auto);
+      }
+      
+      .svg-inline--fa.fa-stack-1x {
+        height: 1em;
+        width: 1.25em;
+      }
+      .svg-inline--fa.fa-stack-2x {
+        height: 2em;
+        width: 2.5em;
+      }
+      
+      .fa-inverse {
+        color: var(--fa-inverse, #fff);
+      }
+      
+      .sr-only,
+      .fa-sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      
+      .sr-only-focusable:not(:focus),
+      .fa-sr-only-focusable:not(:focus) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      
+      .svg-inline--fa .fa-primary {
+        fill: var(--fa-primary-color, currentColor);
+        opacity: var(--fa-primary-opacity, 1);
+      }
+      
+      .svg-inline--fa .fa-secondary {
+        fill: var(--fa-secondary-color, currentColor);
+        opacity: var(--fa-secondary-opacity, 0.4);
+      }
+      
+      .svg-inline--fa.fa-swap-opacity .fa-primary {
+        opacity: var(--fa-secondary-opacity, 0.4);
+      }
+      
+      .svg-inline--fa.fa-swap-opacity .fa-secondary {
+        opacity: var(--fa-primary-opacity, 1);
+      }
+      
+      .svg-inline--fa mask .fa-primary,
+      .svg-inline--fa mask .fa-secondary {
+        fill: black;
+      }</style><style>
+          body { margin: 0; padding: 0; overflow: hidden; }
+        </style>
+      </head>
+      <body>
+        
+      
+      
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chatbot</title>
+        <link rel="stylesheet" media="all" href="https://servotech.kivo.ai/production/assets/api/v1/chat/chatbot-8b12c4a8be1be9f6cfc62446eac599deabb142405ecd3dd7bf21d34c638c20c9.css">
+      
+      
+        <!-- Chatbot container -->
+        <div id="chatbot-container"><div style="position: fixed; bottom: 25px; right: 25px; z-index: 1001; cursor: pointer; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, rgb(210, 3, 214), rgb(255, 206, 11)); padding: 1.5px; box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 6px 0px;"><div style="background-color: rgb(64, 81, 138); border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; transition: transform 0.4s ease-in-out; transform: rotate(360deg);"><div style="transition: opacity 0.3s ease-in-out; opacity: 1; position: absolute;"><img src="https://servotech.kivo.ai/packs/media/react/chatbot/assets/AI_Button-cf83239f50ac0dada93ef5e96fbf0bd7.svg" alt="AI Button" style="width: 30px; height: 30px; display: block;"></div><div style="transition: opacity 0.3s ease-in-out; opacity: 0; position: absolute;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark" class="svg-inline--fa fa-xmark " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" style="color: white; font-size: 25px;"><path fill="currentColor" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"></path></svg></div></div></div><div style="width: 80%; position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); transition: height 0.3s; z-index: 1000; box-shadow: none; display: none; flex-direction: column;"><div style="box-shadow: none; display: flex; border-radius: 8px; min-height: 0px; overflow: hidden;"><div class="chat-sidebar closed" style="width: 50px; visibility: hidden; background-color: white; border-radius: 6px 0px 0px; border-right: 1px solid rgb(229, 231, 235); display: flex; flex-direction: column;"><div style="padding: 16px 12px; background-color: rgb(64, 81, 138); border-radius: 8px 0px 0px; display: flex; justify-content: center; cursor: pointer;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="color: rgb(255, 255, 255); transition: 0.3s;"><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"></path></svg></div><div style="padding-top: 20px; display: flex; flex-direction: column; gap: 4px;"><div class="button closed" style="display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40px;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen-to-square" class="svg-inline--fa fa-pen-to-square button-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="margin-right: 0px;"><path fill="currentColor" d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"></path></svg></div><div class="button closed" style="display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 40px;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass" class="svg-inline--fa fa-magnifying-glass button-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="margin-right: 0px;"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></div></div></div><div style="width: 70%; flex: 1 1 0%; display: flex; flex-direction: column; min-height: 0px;"><div style="display: flex; flex-direction: column; padding-top: 50px; flex: 1 1 0%; min-height: 0px;"><div class="messages-container" style="flex: 1 1 0%; visibility: hidden; min-height: 0px; max-height: 100%; padding: 30px 100px; overflow: hidden auto; scrollbar-width: thin; scrollbar-color: rgb(204, 204, 204) transparent; position: relative; box-sizing: border-box; min-width: 0px;"><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding: 20px 0px; max-width: 900px; margin: 0px auto;"><div style="background: rgb(255, 255, 255); border: 1px solid rgb(225, 232, 240); border-radius: 12px; padding: 20px; cursor: pointer; box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 8px, rgba(0, 0, 0, 0.06) 0px 1px 3px; transition: 0.2s ease-in-out; height: fit-content; min-height: 100px; display: flex; flex-direction: column; justify-content: space-between;"><h3 style="margin: 0px; font-size: 16px; font-weight: 600; color: rgb(26, 32, 44); line-height: 1.3; letter-spacing: -0.01em; padding-bottom: 20px;">Java Candidate</h3><p style="margin: 0px; font-size: 14px; color: rgb(100, 116, 139); line-height: 1.5; font-weight: 400;">Fetch Java candidate data</p></div><div style="background: rgb(255, 255, 255); border: 1px solid rgb(225, 232, 240); border-radius: 12px; padding: 20px; cursor: pointer; box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 8px, rgba(0, 0, 0, 0.06) 0px 1px 3px; transition: 0.2s ease-in-out; height: fit-content; min-height: 100px; display: flex; flex-direction: column; justify-content: space-between;"><h3 style="margin: 0px; font-size: 16px; font-weight: 600; color: rgb(26, 32, 44); line-height: 1.3; letter-spacing: -0.01em; padding-bottom: 20px;">Python Candidate</h3><p style="margin: 0px; font-size: 14px; color: rgb(100, 116, 139); line-height: 1.5; font-weight: 400;">Fetch Python candidate data</p></div><div style="background: rgb(255, 255, 255); border: 1px solid rgb(225, 232, 240); border-radius: 12px; padding: 20px; cursor: pointer; box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 8px, rgba(0, 0, 0, 0.06) 0px 1px 3px; transition: 0.2s ease-in-out; height: fit-content; min-height: 100px; display: flex; flex-direction: column; justify-content: space-between;"><h3 style="margin: 0px; font-size: 16px; font-weight: 600; color: rgb(26, 32, 44); line-height: 1.3; letter-spacing: -0.01em; padding-bottom: 20px;">AI Candidate</h3><p style="margin: 0px; font-size: 14px; color: rgb(100, 116, 139); line-height: 1.5; font-weight: 400;">Fetch AI candidate data</p></div></div><div></div></div><div><div class="input-box-chat" style="border-top: 1px solid rgb(204, 204, 204);"><textarea placeholder="Ask anything" style="flex: 1 1 0%; padding: 5px 0px; border: none; background: transparent; width: 100%; outline: none; min-height: 30px; max-height: 120px; font-size: 15px; resize: none; margin-bottom: 0px; font-family: Inter, sans-serif; height: 30px;"></textarea><button title="Send message" style="background-color: rgb(64, 81, 138); border-radius: 50%; padding: 5px; border: none; cursor: pointer; color: black; height: 35px; width: 35px; display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#F5F5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div></div></div></div></div></div></div>
+      
+        <!-- Include your chatbot script that initializes the chatbot -->
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            if (window.initChatbot) {
+              window.initChatbot('chatbot-container');
+            } else {
+              console.error('initChatbot function not found');
+            }
+          });
+        </script>
+      
+      
+      
+      
+      
+      
+        <script>
+          window.CURRENT_USER = {"email":"processengineering@servotechindia.com","first_name":"Sumit","last_name":"Sharma"};
+          window.CSS_TAGS = "ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKMWMyVnlJam94TENKMGFXMWxJam94TnpVek56a3dORGM0ZlEuTmhhVGZNTGp2MXZwY204YmNSTEV0UERIcVZzbEtKT3hhcDNReHgtUXk5QQ=="; 
+        </script>
+      
+      
+      </body></html>
+
+
+
+    </div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('load', () => {
+  const iframe = document.getElementById('chatbotIframe');
+  if (iframe) {
+    const token = encodeURIComponent('O5SSoWF3lXSjPIlyNX2eAUYPreGckpnnf4N-hv_wxmI');
+    const iframeURL = ``;
+    console.log("Iframe URL:", iframeURL);
+    iframe.src = iframeURL;
+  } else {
+    console.error('No user or iframe not found');
+  }
+});
+        window.addEventListener('message', (event) => {
+        if (event.data?.type === 'chatbot-resize') {
+          const iframe = document.getElementById('chatbotIframe');
+          if (iframe) {
+            iframe.style.height = `${event.data.height}px`;
+          }
+        }
+      });
+</script>
+
+
+
+
+
+
+
+
+

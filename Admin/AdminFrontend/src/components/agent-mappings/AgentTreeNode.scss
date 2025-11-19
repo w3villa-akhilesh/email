@@ -1,0 +1,125 @@
+.agent-tree-node {
+  .node-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+    margin-bottom: 2px;
+
+    &:hover {
+      background-color: #f0f2f5;
+    }
+
+    &.selected {
+      background-color: #e3f2fd;
+      border-left: 3px solid #40518A;
+    }
+
+    .node-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+
+      .chevron {
+        width: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        .chevron-icon {
+          font-size: 12px;
+          color: #666;
+          transition: transform 0.2s;
+        }
+      }
+
+      .chevron-placeholder {
+        width: 16px;
+      }
+
+      .agent-icon {
+        font-size: 16px;
+        
+        &.folder-icon {
+          color: #40518A;
+        }
+
+        &.file-icon {
+          color: #6c757d;
+        }
+      }
+
+      .agent-name {
+        font-weight: 500;
+        color: #333;
+        font-size: 14px;
+      }
+
+      .agent-badge {
+        font-size: 11px;
+        padding: 2px 8px;
+        font-weight: 600;
+      }
+    }
+
+    .node-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .status-icon {
+        font-size: 16px;
+      }
+
+      .config-icon {
+        font-size: 14px;
+        color: #40518A;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .node-children {
+    margin-left: 0;
+  }
+}
+
+// VS Code-like tree styling
+.agent-tree-container {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px;
+  max-height: 600px;
+  overflow-y: auto;
+
+  /* Custom scrollbar */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+
+    &:hover {
+      background: #555;
+    }
+  }
+}
+

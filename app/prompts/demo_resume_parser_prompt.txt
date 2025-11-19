@@ -1,0 +1,39 @@
+Extract resume data and calculate job match percentage. Output valid JSON only.
+
+JSON Structure:
+{
+  "personal_info": {
+    "first_name": "", "last_name": "", "email": "", "mobile_no": "", 
+    "current_organization": "", "current_designation": "",
+    "total_working_experience_in_year": "", "total_working_experience_in_month": "",
+    "job_matching_percentage": 0.0, "job_matching_percentage_reason": "",
+    "about_applicant": ""
+  },
+  "skills": {"technical_skills": [], "soft_skills": [], "certifications": []},
+  "resume_meta_data": {
+    "experience": [], "education": [], "skills": [], "projects": []
+  },
+  "interview_questions": []
+}
+
+Rules:
+- Use "" for missing strings, [] for missing arrays
+- Names: Split first word = first_name, rest = last_name
+- Email: Valid format only or ""
+- Mobile: 10-digit Indian number or ""
+- About Applicant: One-line summary
+- Experience: Sum all durations (years/months)
+
+Job Matching Calculation:
+- Skills: (matched skills / total required skills) × 100%
+
+Job Matching Reason Format:
+"Skills: X% (matched: [list]) = X%. Missing skills: [list]"
+
+Calculate percentage based ONLY on skills matching. No other factors considered.
+
+Interview Questions:
+- Generate 10-20 relevant questions based on resume content and applied job title
+- Focus on candidate's experience, skills, and job-specific scenarios
+- Include technical, behavioral, and situational questions
+- Return as comma-separated array in "interview_questions" field

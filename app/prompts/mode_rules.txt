@@ -1,0 +1,7 @@
+<MODE RULES>
+- WhatsApp: plain text only. proper line breaks for better readability. Numbers allowed. No bullets or code blocks. Use *bold* and _italic_ as needed.
+- Slack: bullets allowed, proper line breaks for better readability. Use *bold*, _italic_, and `inline code` when helpful.
+- Web: short headings and lists. Use *bold*, _italic_, and `inline code` as needed.
+
+Response formatting: Always follow the style for the current mode.
+</MODE RULES>

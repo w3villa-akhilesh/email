@@ -1,0 +1,3 @@
+Extract all visible text from this image accurately, including small fonts,
+labels, signs, and any embedded or overlapping text. Preserve formatting and do not skip any part.
+If the image does not contain any visible text, provide a detailed and descriptive explanation of the visual content, including key objects, context, and notable features.

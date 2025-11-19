@@ -1,0 +1,107 @@
+DATE AND DAY CALCULATION REFERENCE GUIDE
+
+CALENDAR STRUCTURE
+
+DAYS OF THE WEEK (7 days per week):
+1. Monday    (Day 1 of week)
+2. Tuesday   (Day 2 of week)
+3. Wednesday (Day 3 of week)
+4. Thursday  (Day 4 of week)
+5. Friday    (Day 5 of week)
+6. Saturday  (Day 6 of week)
+7. Sunday    (Day 7 of week)
+
+DAY SEQUENCE (What comes after what):
+- Monday → Tuesday → Wednesday → Thursday → Friday → Saturday → Sunday → Monday (repeats)
+- After Sunday comes Monday (week restarts)
+
+MONTHS OF THE YEAR (12 months):
+Month 01: January    - 31 days
+Month 02: February   - 28 days (29 days in leap years)
+Month 03: March      - 31 days
+Month 04: April      - 30 days
+Month 05: May        - 31 days
+Month 06: June       - 30 days
+Month 07: July       - 31 days
+Month 08: August     - 31 days
+Month 09: September  - 30 days
+Month 10: October    - 31 days
+Month 11: November   - 30 days
+Month 12: December   - 31 days
+
+MONTH SEQUENCE (What comes after what):
+- January → February → March → April → May → June → July → August → September → October → November → December → January (repeats)
+- After December comes January (year increments by 1)
+
+LEAP YEAR RULE:
+- A year is a leap year if:
+  * It is divisible by 4 AND
+  * If divisible by 100, it must also be divisible by 400
+- Examples: 2024 is a leap year, 2025 is NOT a leap year, 2000 was a leap year, 1900 was NOT
+
+DATE CALCULATION RULES
+
+STEP-BY-STEP CALCULATION METHOD:
+1. Always start from Today_date (YYYY-MM-DD) and Today_day
+2. Count forward or backward the required number of days
+3. Account for month boundaries (when days exceed month's total)
+4. Account for year boundaries (when month exceeds December)
+5. Calculate the resulting day of the week
+
+RELATIVE DATE CALCULATIONS:
+
+1. TOMORROW:
+   - Add 1 day to Today_date
+   - If current_day = Monday, tomorrow = Tuesday
+   - If current_day = Sunday, tomorrow = Monday (next week)
+
+3. "NEXT [WEEKDAY]":
+   - Find the NEXT occurrence of that weekday AFTER today
+   - Must be at least 1 day in the future (minimum: tomorrow if tomorrow is that weekday)
+   - Count days forward from today until you reach that weekday
+   
+   Example: Today = Friday, November 7, 2025
+   - "next Monday"    = Nov 10 (3 days forward: Fri→Sat→Sun→Mon)
+   - "next Tuesday"   = Nov 11 (4 days forward)
+   - "next Wednesday" = Nov 12 (5 days forward)
+   - "next Thursday"  = Nov 13 (6 days forward)
+   - "next Friday"    = Nov 14 (7 days forward, NOT today)
+   - "next Saturday"  = Nov 15 (8 days forward, NOT tomorrow)
+   - "next Sunday"    = Nov 16 (9 days forward)
+
+4. "THIS [WEEKDAY]":
+   - If the weekday hasn't occurred yet this week: use the upcoming occurrence
+   - If the weekday already passed this week: treat as "next [weekday]"
+
+5. "IN X DAYS" or "X DAYS FROM NOW":
+   - Add X days to Today_date
+   - Example: Today = Nov 7, "in 5 days" = Nov 12
+
+7. "NEXT WEEK":
+   - Add 7 days to Today_date
+   - Example: Today = Nov 7, "next week" = Nov 14
+
+
+EXAMPLES (Assume Today = Friday, Nov 7, 2025):
+
+- "tomorrow": Nov 8, 2025 (Saturday)
+- "next Monday": Nov 10, 2025 (Monday)
+- "next Saturday": Nov 15, 2025 (Saturday, not this week)
+- "next Friday": Nov 14, 2025 (Friday, never today)
+- "in 10 days": Nov 17, 2025 (Monday)
+- "What day is Nov 30, 2025?": Sunday
+
+
+
+CRITICAL REMINDERS
+
+1. ALWAYS use Today_date and Today_day as your ONLY reference point
+2. "Next [weekday]" means the NEXT occurrence AFTER today (never today itself)
+3. Count days carefully when crossing month boundaries
+4. A week has exactly 7 days
+5. After Sunday comes Monday
+6. After December comes January (increment year)
+7. Show your counting steps when calculating to ensure accuracy
+8. Verify your final answer by counting from the start date
+
+

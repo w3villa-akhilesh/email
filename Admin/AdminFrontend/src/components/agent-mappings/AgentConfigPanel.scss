@@ -1,0 +1,61 @@
+.agent-config-panel {
+  height: 100%;
+  
+  .badge-large {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+
+    h5 {
+      color: #40518A;
+      font-weight: 600;
+    }
+  }
+
+  .card-body {
+    form {
+      .form-label {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 8px;
+      }
+
+      .form-select,
+      .form-control {
+        border-radius: 6px;
+        border: 1px solid #ced4da;
+        
+        &:focus {
+          border-color: #40518A;
+          box-shadow: 0 0 0 0.2rem rgba(64, 81, 138, 0.25);
+        }
+      }
+
+      .btn {
+        border-radius: 6px;
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: all 0.2s;
+
+        &:hover:not(:disabled) {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    .border-top {
+      border-top: 1px solid #dee2e6 !important;
+      
+      h6 {
+        color: #40518A;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
