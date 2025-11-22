@@ -162,7 +162,7 @@ async def initiate_triage_agent(query: str, user_id: str, session_id:str, profil
         logger.info(f"Starting triage agent initialization with preloaded_context {preloaded_context}")
         
 
-        profile_block, user_email, parent_origin = get_my_profile_block(profile_info, parent_origin)
+        profile_block, parent_origin = get_my_profile_block(profile_info, parent_origin)
 
         # app_name and company_id for specific key pickup.
         company_id = profile_info['company_id']
