@@ -159,7 +159,7 @@ async def user_agent(
             session_data.update({"token": token, "origin": origin, "company_id": company_id})
             save_session_data(session_id, session_data, app_name)
 
-        db = next(get_db())
+        db = next(get_d)
 
         if not check_existing_session(db, session_id, app_name):
             logger.info(f"New Db Session {session_id}.")
